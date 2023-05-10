@@ -10,7 +10,6 @@ async function fetchRandomPokemon() {
     return data;
     }
     
-    
 
     // I use Set instead of Array for avoiding duplicates in the fetched Pokemons
     const promises = new Set();
@@ -29,67 +28,50 @@ async function fetchRandomPokemon() {
         let card = clonedTemplate.querySelector('.card');
         let randomFact = clonedTemplate.querySelector('.fact'); // seleccionar el p i guardar-lo en una variable
         let img = clonedTemplate.querySelector('img'); // seleccionar la img i guardar-la en una variable
-        let label = clonedTemplate.querySelector('label'); // seleccionar la label i guardar-la una variable
-        let check = clonedTemplate.querySelector('input'); // seleccionar el checkbox i guardar-lo en una variable
+        // let label = clonedTemplate.querySelector('label'); // seleccionar la label i guardar-la una variable
+        // let check = clonedTemplate.querySelector('input'); // seleccionar el checkbox i guardar-lo en una variable
 
         card.setAttribute('id', pokemon.id); // assigna l'id rebut de la API
         randomFact.textContent = pokemon.name; // assigna el text rebut de la API
         img.setAttribute('src', pokemon.sprites.front_default);
-        label.setAttribute('for', `check-${pokemon.id}`); // assigna a l'atribut for l'id rebut de la API amb el prefix "check-", per enllaçar-lo al checkbox
-        check.setAttribute('id', `check-${pokemon.id}`); // assigna l'id rebut de la API amb el prefix "check-", per evitar duplicat amb l'id de l'article
- 
+        // label.setAttribute('for', `check-${pokemon.id}`); // assigna a l'atribut for l'id rebut de la API amb el prefix "check-", per enllaçar-lo al checkbox
+        // check.setAttribute('id', `check-${pokemon.id}`); // assigna l'id rebut de la API amb el prefix "check-", per evitar duplicat amb l'id de l'article
+        // button.setAttribute('data-pokemon-id', pokemon.id); // store the Pokemon ID as a data attribute
+
         out.appendChild(clonedTemplate); // afegeix el clon amb tota la informació al section id="cards"
-        
-        //   const card = document.createElement("div");
-      //   card.classList.add("card");
-      //   card.setAttribute("id", `pokemon-container-$(i)`);
-      //   card.setAttribute("data-index",i);
-  
-      //   const name = document.createElement("h2");
-      //   name.textContent = pokemon.name;
-  
-      //   const image = document.createElement("img");
-      //   image.src = pokemon.sprites.front_default;
-      //   image.setAttribute("alt", pokemon.name);
-  
-      //   card.appendChild(name);
-      //   card.appendChild(image);
-      //   container.appendChild(card);
 
       });
 
-      
-      
-
     })
     .catch(error => console.error(error));
-  
+ 
     
+ 
 
-    container.addEventListener("click", event => {
-      const card = event.target.closest(".card");
-      if (card) {
-        const pokemon = results[card.getAttribute("data-index")];
-        const pokemonId = pokemon.id;
-        const baseURL = window.location.origin;
-        const new_url = `${baseURL}?PokeId=${pokemonId}`;
-        window.location.href = new_url; // Navigate to the URL
-      }
-    });
+//     container.addEventListener("click", event => {
+//       const card = event.target.closest(".card");
+//       if (card) {
+//         const pokemon = results[card.getAttribute("data-index")];
+//         const pokemonId = pokemon.id;
+//         const baseURL = window.location.origin;
+//         const new_url = `${baseURL}?PokeId=${pokemonId}`;
+//         window.location.href = new_url; // Navigate to the URL
+//       }
+//     });
 
-    // Get the PokeId parameter from the URL
+//     // Get the PokeId parameter from the URL
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const pokeId = urlParams.get('PokeId');
+//     const urlParams = new URLSearchParams(window.location.search);
+//     const pokeId = urlParams.get('PokeId');
 
-if (pokeId) {
-  console.log(pokeId);
-  // If the PokeId parameter exists, generate the new page with information
-  // and display it to the user.
-  // ...
-} else {
-  // If the PokeId parameter does not exist, show the standard page.
-  // ...
-}
+// if (pokeId) {
+//   console.log(pokeId);
+//   // If the PokeId parameter exists, generate the new page with information
+//   // and display it to the user.
+//   // ...
+// } else {
+//   // If the PokeId parameter does not exist, show the standard page.
+//   // ...
+// }
   
    
