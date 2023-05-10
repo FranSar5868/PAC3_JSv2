@@ -60,7 +60,18 @@ async function fetchRandomPokemon() {
     
       if (pokeId) {
         // Do something with the pokeId parameter, e.g. fetch the Pokemon data and display it on the page
-        console.dir(promises);
+        
+        const pokemonPromise = [...promises].find(promise => {
+          return promise.then(pokemon => {
+            return pokemon.id === pokeId;
+          });
+        });
+        pokemonPromise.then(pokemon => {
+          console.dir(pokemon);
+          // Code to display the details of the selected Pokemon
+        });
+        
+        
       }
     });
  
